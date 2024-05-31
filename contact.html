@@ -1,0 +1,308 @@
+<!--
+  <?php
+    use Controller\Mail;
+    require 'vendor/autoload.php';
+
+      if(isset($_POST['nom']) && !empty($_POST['nom']) &&
+        isset($_POST['tel']) && !empty($_POST['tel']) &&
+        isset($_POST['email']) && !empty($_POST['email']) &&
+        isset($_POST['message']) && !empty($_POST['message'])
+      ){
+
+        $nom = $_POST['nom'];
+        $tel = $_POST['tel'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+        
+          $mail = new Mail($_POST['nom'], $_POST['tel'], $_POST['email'], $_POST['message']);
+          $reponse = $mail->send();
+
+          $class = $reponse ? 'succes':'danger';
+          $info = $reponse ? 'Envoyé':'Non envoyé';
+        }
+
+  ?>
+      -->
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" type="image/png" href="LPSIC-removebg-preview.png" />
+    <title>Contact - lpsic-lpmmi</title>
+  </head>
+  <body id="home" class="body-contact">
+    <div id="loader">
+      <div class="center">
+        <div class="one"><</div>
+      </div>
+    </div>
+    <!--Menu/Navbar-->
+    <nav class="lux-navbar container-fluid navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+       <a class="navbar-brand text-uppercase mx-4 py-3" href="index.html"
+          ><img
+            src="LPSIC-removebg-preview.png"
+            alt=""
+            style="height: 70px; width: 200px"
+        /></a>
+        <button
+          class="navbar-toggler p-2 py-1"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item pe-4">
+              <a href="index.html" class="nav-link active">Accueil</a>
+            </li>
+            <li class="nav-item pe-4">
+              <a class="nav-link" href="apropos.html"> A Propos </a>
+            </li>
+            <li class="nav-item pe-4">
+              <a href="admission.html" class="nav-link">Admission</a>
+            </li>
+            <li class="nav-item pe-4">
+              <a href="formation.html" class="nav-link">Formations</a>
+            </li>
+            <li class="nav-item pe-4">
+              <a class="nav-link" href="evenement.html"> Evènements </a>
+            </li>
+            <li class="nav-item pe-4">
+              <a href="contact.html" class="nav-link actives">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="presentation-contact">
+      <div class="row d-flex text-center text-light px-5 mx-5">
+        <h1>CONTACT</h1>
+        <div class="d-flex pt-5 justify-content-center">
+          <small class="pe-3">LPSIC-LPMMI</small>
+          <box-icon
+            name="chevron-right"
+            animation="fade-left"
+            color="#ffffff"
+            class="chevron-animation"
+          ></box-icon>
+          <small class="">CONTACT</small>
+        </div>
+      </div>
+    </section>
+
+    <!--Contact-->
+    <section class="contact">
+      <div
+        class="container contact-height d-flex align-items-center justify-content-center mx-auto my-auto"
+      >
+        <div class="row">
+          <div class="col-lg-6 mb-5 col-contact">
+            <div class="contact-section">
+              <div class="contact-form">
+                <div>
+                  <h1 class="text-center mt-5 mb-5">Contactez-nous</h1>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                  <input
+                    class="mb-4 w-100"
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    placeholder="Nom"
+                    required
+                  />
+                  <input
+                    class="mb-4 w-100"
+                    type="tel"
+                    id="tel"
+                    name="tel"
+                    placeholder="Téléphone"
+                    required
+                  />
+                  <input
+                    class="mb-4 w-100"
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                  />
+                  <textarea
+                    class="mb-4 w-100"
+                    name="message"
+                    id="message"
+                    rows="6"
+                    placeholder="Votre message ici..."
+                  ></textarea>
+
+                  <?php if(isset($info)):?>
+                  <p class="alert <?= $class; ?>">
+                    <? $info; ?>
+                  </p>
+                  <?php endif; ?>
+
+                  <button class="w-100" type="submit">Envoyer</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-5 col-map">
+            <div class="map-section">
+              <div class="map-style"></div>
+              <div class="map">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d125876.63166972852!2d1.051393!3d9.6258256!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x102b8fa28fe1eedd%3A0x99f73c2e5c45188c!2sUniversit%C3%A9%20de%20Kara!5e0!3m2!1sfr!2stg!4v1713896729288!5m2!1sfr!2stg"
+                  width="600"
+                  height="450"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Image de LPSIC-LPMMI-->
+    <section class="">
+      <div class="image-principal">
+        <img
+          src="PSX_20240419_115317.jpg"
+          alt="Bâtiment LPSIC"
+          class="img-fluid"
+          style="height: 350px; width: 100%"
+        />
+        <div
+          class="image-principal-parallax d-flex align-items-center justify-content-center"
+        >
+          <h1>LPSIC-LPMMI</h1>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="">
+      <div class="waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+        <div class="wave" id="wave3"></div>
+        <div class="wave" id="wave4"></div>
+      </div>
+      <div class="footer-body container">
+        <div class="row pb-5 footer-items">
+          <div class="col-md-12 col-lg-6 d-none d-lg-block text-center">
+            <img
+              src="universite_kara_logo-800x510.jpg"
+              alt=""
+              class="img-fluid"
+              style="height: 150px; width: 400px; margin-bottom: 25px"
+            />
+            <div>
+              <h3>UNIVERSITÉ DE KARA</h3>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Dolores, id enim ea voluptate porro eaque odit? Necessitatibus
+                harum esse iste.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 range mb-4">
+            <img src="" alt="" />
+            <div>
+              <h5>Liens Utiles</h5>
+              <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="apropos.html">À Propos</a></li>
+                <li><a href="admission.html">Admission</a></li>
+                <li><a href="#">Concours</a></li>
+                <li><a href="formation.html">Formations</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 range mb-4">
+            <img src="" alt="" />
+            <div>
+              <h5>Coordonnées</h5>
+              <ul>
+                <li><a href="#">Pya, Kara, Togo N°1 (Route Niamtougou)</a></li>
+                <li>0022893496226 / 0022870091604</li>
+                <li><a href="#">claudixime15@yahoo.com</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-6 d-sm-block d-lg-none text-center">
+            <img
+              src="universite_kara_logo-800x510.jpg"
+              alt=""
+              class="img-fluid"
+              style="height: 150px; width: 400px; margin-bottom: 25px"
+            />
+            <div>
+              <h3>UNIVERSITÉ DE KARA</h3>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Dolores, id enim ea voluptate porro eaque odit? Necessitatibus
+                harum esse iste.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="text-center">
+          Copyright &copy; 2024 LPSIC-LPMMI | All Rights Reserved | By GEEKS
+          Club
+        </p>
+      </div>
+    </footer>
+    <div class="home-button">
+      <div class="back-button">
+        <a href="#home"
+          ><box-icon
+            name="chevron-up"
+            animation="tada"
+            type="solid"
+            color="#000050"
+          ></box-icon
+        ></a>
+      </div>
+    </div>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+    <script>
+      jQuery(document).ready(function ($) {
+        "use strict";
+        $("#loader").delay(1000).fadeOut("slow");
+
+        var wow = new WOW({
+          boxClass: "animate",
+          animateClass: "animated",
+          offset: 90,
+          mobile: false,
+        });
+        wow.init();
+      });
+    </script>
+  </body>
+</html>
