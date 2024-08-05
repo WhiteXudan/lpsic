@@ -1,1 +1,1 @@
-# lpsic.github.io
+# lpsic
